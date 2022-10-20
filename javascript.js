@@ -25,8 +25,10 @@ function playRound(playerSelection, computerSelection) {
 
         if (computerSelection == "PAPER") {
             winner = "You Lose! Paper beats Rock.";
+            comScore++;
         } else if (computerSelection == "SCISSORS") {
             winner = "You Win! Rock beats Scissors.";
+            score++;
         } else {
             winner = "It's a tie!";
         }
@@ -35,8 +37,10 @@ function playRound(playerSelection, computerSelection) {
 
         if (computerSelection == "ROCK") {
             winner = "You Win! Paper beats Rock.";
+            score++
         } else if (computerSelection == "SCISSORS") {
             winner = "You Lose! Scissors beats Paper.";
+            comScore++;
         } else {
             winner = "It's a tie!";
         }
@@ -45,8 +49,10 @@ function playRound(playerSelection, computerSelection) {
 
         if (computerSelection == "ROCK") {
             winner = "You Lose! Rock beats Scissors.";
+            comScore++;
         } else if (computerSelection == "PAPER") {
             winner = "You Win! Scissors beats Paper.";
+            score++;
         } else {
             winner = "It's a tie!";
         }
@@ -61,6 +67,17 @@ function game() {
         let playerChoice = prompt("Rock, paper, or scissors?");
         console.log(playRound(playerChoice, getComputerChoice()));
     }
+
+    if (score > comScore) {
+       console.log("You win!");
+    } else if (score < comScore) {
+        console.log("You lose :(");
+    } else {
+        console.log("You tied!");
+    }
 }
+
+let score = 0;
+let comScore = 0;
 
 game();
