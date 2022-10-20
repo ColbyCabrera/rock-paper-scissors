@@ -35,7 +35,7 @@ function playRound(playerSelection, computerSelection) {
 
         if (computerSelection == "ROCK") {
             winner = "You Win! Paper beats Rock.";
-        } else if (computerSelection == "Scissors") {
+        } else if (computerSelection == "SCISSORS") {
             winner = "You Lose! Scissors beats Paper.";
         } else {
             winner = "It's a tie!";
