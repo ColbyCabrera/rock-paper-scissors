@@ -61,23 +61,44 @@ function playRound(playerSelection, computerSelection) {
     return winner;
 }
 
-function game() {
+function game(choice) {
 
-    for (i = 0; i < 5; i++) {
-        let playerChoice = prompt("Rock, paper, or scissors?");
-        console.log(playRound(playerChoice, getComputerChoice()));
-    }
+    let scoreboard = document.querySelector('#scoreboard');
+    let roundResults = document.querySelector('#round-results');
+    let gameResults = document.querySelector('#game-results');
+    roundResults.textContent = playRound(choice, getComputerChoice());
+    scoreboard.textContent = score + " - " + comScore;
+    
+    if (comScore >= 5) {
+        gameResults.textContent = "You lose! Better luck next time... Select any choice to play again.";
 
-    if (score > comScore) {
-       console.log("You win!");
-    } else if (score < comScore) {
-        console.log("You lose :(");
-    } else {
-        console.log("You tied!");
+        score = 0;
+        comScore = 0;
+    } else if (score >= 5) {
+        gameResults.textContent = "You win! Congratulations!! Select any choice to play again.";
+       
+        score = 0;
+        comScore = 0
     }
+}
+
+function getChoice(element) {
+    let choice, result = 0;
+
+    choice = element.currentTarget.id;
+    game(choice);
+    return 0;
 }
 
 let score = 0;
 let comScore = 0;
 
-game();
+
+let btn = document.querySelectorAll(".btn");
+btn.forEach( (btn) => btn.addEventListener('click', getChoice));
+
+
+// get plaer choice
+// run game with player choice
+// update scoreboard with score after each round
+// if score of player or pc gets 5 declare winner by changing text (score only increases in a decided round)
