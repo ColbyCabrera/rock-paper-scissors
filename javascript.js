@@ -63,22 +63,25 @@ function playRound(playerSelection, computerSelection) {
 
 function game(choice) {
 
-    let scoreboard = document.querySelector('#scoreboard');
-    let roundResults = document.querySelector('#round-results');
-    let gameResults = document.querySelector('#game-results');
     roundResults.textContent = playRound(choice, getComputerChoice());
+    roundResults.style.color = "#eee";
     scoreboard.textContent = score + " - " + comScore;
     
     if (comScore >= 5) {
+        
         gameResults.textContent = "You lose! Better luck next time... Select any choice to play again.";
+        gameResults.style.color = "#eee";
 
         score = 0;
         comScore = 0;
+        roundResults.style.color = "#000";
     } else if (score >= 5) {
         gameResults.textContent = "You win! Congratulations!! Select any choice to play again.";
-       
+        gameResults.style.color = "#eee";
+
         score = 0;
         comScore = 0
+        roundResults.style.color = "#000";
     }
 }
 
@@ -86,12 +89,16 @@ function getChoice(element) {
     let choice, result = 0;
 
     choice = element.currentTarget.id;
+    gameResults.style.color = "#000";
     game(choice);
     return 0;
 }
 
 let score = 0;
 let comScore = 0;
+let scoreboard = document.querySelector('#scoreboard');
+let roundResults = document.querySelector('#round-results');
+let gameResults = document.querySelector('#game-results');
 
 
 let btn = document.querySelectorAll(".btn");
